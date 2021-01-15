@@ -84,16 +84,13 @@ WSGI_APPLICATION = 'gamelibrary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4q6q5rhavtseg',
-        'USER': 'irpekddetncwrq',
-        'PASSWORD': 'e8c9301a102500aee726c65ec6d50e81f33937a3db698fcb637e9fc94dcf6770',
-        'HOST': 'ec2-52-31-233-101.eu-west-1.compute.amazonaws.com',
+        'NAME': 'dcgc3gu6q0msho',
+        'USER': 'gskhzmdtorykos',
+        'PASSWORD': '7559ec17bed8a3a260e1afb9c8265e3c4c6e09460f1bf8678bf40f13a21332ef',
+        'HOST': 'ec2-52-204-232-46.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
-
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
