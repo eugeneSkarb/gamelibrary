@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/index.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <h3>Данные вашего профиля</h3>
+        <p>Имя пользователя: {{ user.username }}</p>
+        <p>Адрес электронной почты: {{ user.email }}</p>
+    </div>
+
+    <div class="container-fluid mt-3">
+        <h3>Добавленные игры</h3>
+        {% if games.count == 0 %}
+            <p>Вы пока не добавили ни одной игры. Вы можете сделать это по ссылке из
+                выпадающего меню профиля в шапке страницы.</p>
+        {% endif %}
+        {% include 'components/game_grid.html' %}
+    </div>
+{% endblock content %}

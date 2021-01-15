@@ -1,0 +1,74 @@
+{% load main_extras %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/game-grid.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+<div class="container-fluid game-grid">
+    {% for game in games %}
+        <a class="game-grid-card text-decoration-none text-dark" href="{{ '/games/'|addstr:game.id }}">
+            <div class="user-info">
+                {% if game.id in user_games %}
+                    <div class="userGameIcon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                {% endif %}
+
+                {% if game.id in user_ratings %}
+                    <div class="userGameRating">{{ user_ratings|get_item:game.id }}</div>
+                {% endif %}
+            </div>
+
+            <img src="{{ game.image.url }}"
+                 onerror="this.src = 'https://i.stack.imgur.com/y9DpT.jpg'"
+                 class="game-card-image"/>
+            <div>
+                <p>{{ game.name }} ({{ game.released }})</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+    {% if games.paginator.num_pages > 1 %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if games.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ "?page="|addstr:games.previous_page_number }}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ "?page="|addstr:games.previous_page_number }}">
+                            {{ games.previous_page_number }}
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <a class="page-link" href="#">{{ games.number }}</a>
+                </li>
+
+                {% if games.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ "?page="|addstr:games.next_page_number }}">
+                            {{ games.next_page_number }}
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ "?page="|addstr:games.next_page_number }}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>

@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% block title %}Добавление игры{% endblock %}
+
+{% block content %}
+    <div class="container-fluid d-flex flex-column mt-3 px-3">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-link active" id="nav-add-game-tab" data-bs-toggle="tab" href="#nav-add-game" role="tab"
+                   aria-controls="nav-add-game" aria-selected="true">Добавление игры</a>
+                <a class="nav-link" id="nav-add-developer-tab" data-bs-toggle="tab" href="#nav-add-developer" role="tab"
+                   aria-controls="nav-add-developer" aria-selected="false">Добавление разработчика</a>
+                <a class="nav-link" id="nav-add-publisher-tab" data-bs-toggle="tab" href="#nav-add-publisher" role="tab"
+                   aria-controls="#nav-add-publisher" aria-selected="false">Добавление издателя</a>
+                <a class="nav-link" id="nav-add-genre-tab" data-bs-toggle="tab" href="#nav-add-genre" role="tab"
+                   aria-controls="#nav-add-publisher" aria-selected="false">Добавление жанра</a>
+            </div>
+        </nav>
+        <div class="tab-content px-3" id="nav-tabContent">
+            <div class="tab-pane fade show active"
+                 id="nav-add-game"
+                 role="tabpanel"
+                 aria-labelledby="nav-home-tab"
+            >
+                {% include 'components/simple-form.html' with action_url='/create_game/' form=game_form submit_text='Добавить' %}
+            </div>
+            <div class="tab-pane fade"
+                 id="nav-add-developer"
+                 role="tabpanel"
+                 aria-labelledby="nav-profile-tab"
+            >
+                {% include 'components/simple-form.html' with action_url='/create_game_studio/' form=game_studio_form submit_text='Добавить' %}
+            </div>
+            <div class="tab-pane fade"
+                 id="nav-add-publisher"
+                 role="tabpanel"
+                 aria-labelledby="nav-contact-tab"
+            >
+                {% include 'components/simple-form.html' with action_url='/create_publisher/' form=publisher_form submit_text='Добавить' %}
+            </div>
+            <div class="tab-pane fade"
+                 id="nav-add-genre"
+                 role="tabpanel"
+                 aria-labelledby="nav-contact-tab"
+            >
+                {% include 'components/simple-form.html' with action_url='/create_genre/' form=genre_form submit_text='Добавить' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

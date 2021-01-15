@@ -1,0 +1,1 @@
+pip install pillow libsass django-compressor django-sass-processor

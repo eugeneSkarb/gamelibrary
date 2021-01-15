@@ -1,0 +1,45 @@
+@import "colors";
+
+.toast-container {
+  bottom: 50px;
+  right: 50px;
+}
+
+#top-navigation {
+  justify-content: space-between;
+
+  & > * {
+    display: flex;
+    align-items: center;
+  }
+
+  #search-form {
+    min-width: 300px;
+  }
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.default-form {
+  & > * {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 15px;
+    max-width: 300px;
+  }
+
+  .field-error ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+}

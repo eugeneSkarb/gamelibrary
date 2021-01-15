@@ -1,0 +1,21 @@
+@import "colors";
+
+* {
+  transition: all 0.3s;
+}
+
+p, ul {
+  margin-bottom: 0;
+}
+
+.page-item {
+  .page-link {
+    color: $main_color;
+  }
+
+  &.active .page-link {
+    color: white;
+    background-color: $main_color;
+    border-color: $main_color;
+  }
+}

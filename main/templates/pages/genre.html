@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% block title %}Страница жанра - {{ genre.name }}{% endblock %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/detailed-page.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+{% block content %}
+    <div class="container-fluid d-flex flex-column mt-3 px-4">
+        <h2>{{ genre.name }}</h2>
+        <p>{{ genre.description }}</p>
+
+        {% include 'components/game_grid.html' %}
+    </div>
+{% endblock content %}

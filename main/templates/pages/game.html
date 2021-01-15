@@ -1,0 +1,103 @@
+{% extends "main/base.html" %}
+{% block title %}{{ game.name }}{% endblock %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/game.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+{% block content %}
+    <div class="container-fluid d-flex flex-column mt-3 px-3 game-detailed">
+        <h3 class="mb-4">{{ game.name }}</h3>
+        <div class="d-flex">
+            <div class="me-2">
+                <img src="{{ game.image.url }}" onerror="this.src = 'https://i.stack.imgur.com/y9DpT.jpg'">
+            </div>
+            <div class="container-fluid d-flex flex-column">
+                <div class="game-score {{ rating_color }}">
+                    {{ game.metacritic_rating }}
+                </div>
+                <div class="mt-3">
+                    <h4>Краткая информация</h4>
+                    <p><b>Жанры:</b> {{ genres_string }}</p>
+                    <p><b>Год выхода:</b> {{ game.released }}</p>
+                    <p><b>Разработчик:</b> {{ game.game_studio.name }}</p>
+                    <p><b>Издатель:</b> {{ game.publisher.name }}</p>
+                    <p class="mt-2">Ваша оценка:</p>
+                    <div class="rating">
+                        {% for i in '9876543210'|make_list %}
+                            <a href="/rate_game/{{ game.id }}?score={{ i|add:1 }}"
+                               class="{% if user_rating == i|add:1 %}chosen-rating{% endif %}">
+                                <span>☆</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <nav class="mt-4">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active"
+                           id="nav-game-desc-tab"
+                           data-bs-toggle="tab"
+                           href="#nav-game-desc"
+                           role="tab"
+                           aria-controls="nav-game-desc"
+                           aria-selected="true">Описание игры</a>
+
+                        <a class="nav-link"
+                           id="nav-developer-info-tab"
+                           data-bs-toggle="tab"
+                           href="#nav-developer-info"
+                           role="tab"
+                           aria-controls="nav-developer-info"
+                           aria-selected="false">Информация о разработчике</a>
+
+                        <a class="nav-link"
+                           id="nav-publisher-info-tab"
+                           data-bs-toggle="tab"
+                           href="#nav-publisher-info"
+                           role="tab"
+                           aria-controls="nav-publisher-info"
+                           aria-selected="false">Информация о издателе</a>
+                    </div>
+                </nav>
+                <div class="tab-content py-4 px-2" id="nav-tabContent">
+                    <div class="tab-pane fade show active"
+                         id="nav-game-desc"
+                         role="tabpanel"
+                         aria-labelledby="nav-game-desc-tab"
+                    >
+                        <p>{{ game.description }}</p>
+                    </div>
+                    <div class="tab-pane fade game-studio-info"
+                         id="nav-developer-info"
+                         role="tabpanel"
+                         aria-labelledby="nav-developer-info-tab"
+                    >
+                        <h4>{{ game.game_studio.name }} ({{ game.game_studio.founded }})</h4>
+                        <div class="d-flex mt-3 flex-column">
+                            <div>
+                                <img src="{{ game.game_studio.image.url }}" alt="">
+                            </div>
+                            <div class="mt-3">
+                                <p>{{ game.game_studio.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         id="nav-publisher-info"
+                         role="tabpanel"
+                         aria-labelledby="nav-publisher-info-tab"
+                    >
+                        <h4>{{ game.publisher.name }} ({{ game.publisher.founded }})</h4>
+                        <div class="d-flex mt-3 flex-column">
+                            <p><b>Директор:</b> {{ game.publisher.director }}</p>
+                            <p><b>Основатель:</b> {{ game.publisher.founder }}</p>
+                            <p class="mt-3">{{ game.publisher.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

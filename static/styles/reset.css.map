@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "reset.css",
+	"sources": [
+		"reset.scss",
+		"colors.scss"
+	],
+	"names": [],
+	"mappings": "AAEA,AAAA,CAAC,CAAC;EACA,UAAU,EAAE,QAAQ,GACrB;;AAED,AAAA,CAAC,EAAE,EAAE,CAAC;EACJ,aAAa,EAAE,CAAC,GACjB;;AAED,AACE,UADQ,CACR,UAAU,CAAC;EACT,KAAK,ECZI,OAAO,GDajB;;AAHH,AAKE,UALQ,AAKP,OAAO,CAAC,UAAU,CAAC;EAClB,KAAK,EAAE,KAAK;EACZ,gBAAgB,ECjBP,OAAO;EDkBhB,YAAY,EClBH,OAAO,GDmBjB"
+}

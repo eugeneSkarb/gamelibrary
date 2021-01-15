@@ -1,0 +1,65 @@
+.game-detailed {
+  img {
+    max-width: 350px;
+    height: auto;
+  }
+
+  .game-score {
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 10px;
+
+    &--green {
+      background-color: #6c3;
+    }
+
+    &--yellow {
+      background-color: #fc3;
+    }
+
+    &--red {
+      background-color: #f00;
+    }
+  }
+
+  .game-studio-info {
+    flex-direction: column;
+
+    & > div:first-of-type {
+      img {
+        max-width: 175px;
+      }
+    }
+  }
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  max-width: fit-content;
+
+  a {
+    text-decoration: none;
+    color: unset;
+
+    & > span {
+      font-size: 24px;
+    }
+  }
+
+  & > a:hover,
+  & > .chosen-rating,
+  & > .chosen-rating ~ a,
+  & > a:hover ~ a {
+    span:before {
+      content: "\2605";
+      position: absolute;
+    }
+  }
+}

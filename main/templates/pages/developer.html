@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{% block title %}Страница разработчика - {{ game_studio.name }}{% endblock %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/detailed-page.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+{% block content %}
+    <div class="container-fluid d-flex flex-column mt-3 px-4">
+    <div class="d-flex">
+        <div>
+            <img style="max-width: 250px" src="{{ game_studio.image.url }}" alt="">
+        </div>
+        <div class="ms-4">
+            <h2>{{ game_studio.name }} ({{ game_studio.founded }})</h2>
+            <p>{{ game_studio.description }}</p>
+        </div>
+    </div>
+        
+
+        {% include 'components/game_grid.html' %}
+    </div>
+{% endblock content %}

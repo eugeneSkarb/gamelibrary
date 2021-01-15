@@ -1,0 +1,32 @@
+.toast-container {
+  bottom: 50px;
+  right: 50px; }
+
+#top-navigation {
+  justify-content: space-between; }
+  #top-navigation > * {
+    display: flex;
+    align-items: center; }
+  #top-navigation #search-form {
+    min-width: 300px; }
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center; }
+
+.flex-align-center {
+  display: flex;
+  align-items: center; }
+
+.default-form > * {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  max-width: 300px; }
+
+.default-form .field-error ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0; }
+
+/*# sourceMappingURL=base.css.map */

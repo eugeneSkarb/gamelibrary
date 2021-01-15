@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+{% block title %}Главная страница{% endblock %}
+
+{% block head %}
+    {% load sass_tags %}
+    <link type="text/css" href="{% sass_src 'styles/index.scss' %}" rel="stylesheet" media="screen">
+{% endblock head %}
+
+
+{% block content %}
+    <div class="container-fluid justify-content-center text-center mt-3">
+        <h2>Последние добавленные игры</h2>
+        {% include 'components/game_grid.html' %}
+    </div>
+{% endblock content %}
